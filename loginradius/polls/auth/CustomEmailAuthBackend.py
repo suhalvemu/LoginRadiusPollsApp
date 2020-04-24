@@ -9,7 +9,7 @@ class EmailAuthBackend():
             success=user.check_password(password)
             if success:
                 return user
-        except user.DoesNotExist:
+        except User.DoesNotExist:
             pass
         return None
 
