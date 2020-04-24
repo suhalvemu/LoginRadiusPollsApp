@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block head_title %}results{% endblock %}
+{% block content %}
+    <div class="container">
+    <h4> You are logged in as  {{user.username}}</h4>
+
+    <div class="container">
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    </div>
+    <h5>Total votes :{{total_votes}}</h5>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Contestants</th>
+        <th>votes</th>
+    </thead>
+    <tbody>
+    {% for key,value in results.items %}
+      <tr>
+        <td>{{key}}</td>
+        <td>{{value}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+    <!--<ul>-->
+        <!--{% for key,value in results.items %}-->
+        <!--<li>{{key}} {{value}}</li>-->
+        <!--{% endfor %}-->
+    <!--</ul>-->
+    <!--</div>-->
+
+{% endblock %}

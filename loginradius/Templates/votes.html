@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Votes {% endblock %}
+
+{% block content %}
+<div class="container">
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+  <form method="POST">
+       {% csrf_token %}
+       <p> You are logged in as  {{user.username}}</p>
+
+      <table class="table table-striped">
+          <thead>
+          <tr>
+              <th>Contestant</th>
+              <th>click on the button</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for poll in polls %}
+          <tr>
+              <td>{{poll.contestant_name}}</td>
+              <td>&nbsp;<input type="radio" id="{{poll.id}}" name="poll" value={{poll.id}}></td>
+          </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+  <!--<ul>-->
+      <!--{% for poll in polls %}-->
+      <!--<li><strong>{{poll.contestant_name}}</strong>&nbsp;<input type="radio" id="{poll.id}" name="poll" value={{poll.id}}></li>-->
+      <!--{% endfor %}-->
+       <button type="submit" class="btn btn-info">Submit </button>
+      {% if message %}<p><strong>{{message}}</strong></p>{% endif %}
+  <!--</ul>-->
+  </form>
+
+</div>
+{% endblock %}
